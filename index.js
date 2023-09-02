@@ -39,6 +39,28 @@ app.get('/kpi-utility', (req,res)=>{
     })
 })
 
+// get data by id
+app.get('/kpi-utility/:id',(req,res)=>{
+    // console.log('get data by id');
+    let getId =  req.params.id;
+    let queryID = `select * from kpi_utility where id = ${getId}`;
+    db.query(queryID,(err,result)=>{
+        if (err) {
+            console.log(err);
+        }
+        if (result.length>0) {
+            res.send({
+                message:'get kpi utility by id',
+                data: result
+            });
+        }else{
+            res.send({
+                message: 'data not found'
+            })
+        }
+    })
+})
+
 app.listen(3000, () => {
     console.log('server-running');
 })
