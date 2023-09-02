@@ -25,7 +25,7 @@ Used to retrieve the "ID" from the kpi_utility data source (GET ID 8).
 Using the "post" method in postman and when successful the message "data inserted" will appear. (ADD NEW ID : 2)
 
 ### Success Insert
-![](img/insert.jpeg)
+![](img/Insert.jpeg)
 ### Console Log Insert
 ![](img/console-log-insert.jpeg)
 <br>
@@ -38,7 +38,7 @@ Update data in postman using the "PUT" method, and when successful the message "
 ![](img/update-data.jpeg)
 ### If it has been updated then ID number 2 cannot be found
 ![](img/after-update.jpeg)
-### Data check results when it has been updated
+### Data check results when it has been updated (Check ID 100)
 ![](img/after-update-2.jpeg)
 <br>
 ---
