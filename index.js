@@ -97,6 +97,41 @@ app.post('/kpi-utility', (req, res)=>{
 
 })
 
+// update data 
+app.put('/kpi-utility/:id', (req,res)=>{
+    console.log(req.body, 'updated_data');
+
+    let getID = req.params.id;
+    let id = req.body.id;
+    let month = req.body.month;  
+    let create_date = req.body.create_date;  
+    let last_update = req.body.last_update;  
+    let user_create = req.body.user_create;
+    let Index_Electricity = req.body.Index_Electricity;
+    let Index_Steam = req.body.Index_Steam;
+    let Index_Water = req.body.Index_Water;
+    let utility_downtime = req.body.utility_downtime;
+    let mtbf = req.body.mtbf;
+    let mttr = req.body.mttr;
+    let crp = req.body.crp;
+    let Index_Low_Pres_Compresor = req.body.Index_Low_Pres_Compresor;
+    let Index_High_Pres_Compresor = req.body.Index_High_Pres_Compresor;
+
+    let queryUpdated = `update kpi_utility set id = '${id}', month = '${month}', create_date = '${create_date}', last_update = '${last_update}', 
+    user_create = '${user_create}', Index_Electricity = '${Index_Electricity}', Index_Steam = '${Index_Steam}', Index_Water = '${Index_Water}', 
+    utility_downtime = '${utility_downtime}', mtbf = '${mtbf}', mttr = '${mttr}', crp = '${crp}', Index_Low_Pres_Compresor = '${Index_Low_Pres_Compresor}',Index_High_Pres_Compresor = '${Index_High_Pres_Compresor}' where id = '${getID}'`;
+
+    db.query(queryUpdated, (err,result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send({
+            message: 'data updated'
+        })
+    })
+
+})
+
 app.listen(3000, () => {
     console.log('server-running');
 })
