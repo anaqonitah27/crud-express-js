@@ -129,7 +129,22 @@ app.put('/kpi-utility/:id', (req,res)=>{
             message: 'data updated'
         })
     })
+})
 
+// delete data
+app.delete('/kpi-utility/:id', (req, res) => {
+    let getID = req.params.id;
+
+    let queryDelete = `delete from kpi_utility where id = '${getID}'`;
+
+    db.query(queryDelete, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send({
+            message: 'data deleted'
+        })
+    });
 })
 
 app.listen(3000, () => {
