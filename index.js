@@ -21,6 +21,22 @@ const db = mysql.createConnection({
 db.connect(err=>{
     if(err) {console.log(err, 'error');}
     console.log('database connected...');
+});
+
+// get data in postman
+app.get('/kpi-utility', (req,res)=>{
+    // console.log('get-kpi-utility');
+    let query = `select * from kpi_utility`;
+    db.query(query, (err, result)=>{
+        if(err){
+            console.log(err, 'error');
+        }if(result.length>0){
+            res.send({
+                message:'all data in kpi-utility',
+                data:result
+            })
+        }
+    })
 })
 
 app.listen(3000, () => {
